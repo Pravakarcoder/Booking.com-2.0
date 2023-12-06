@@ -4,8 +4,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-
 import { Button } from "@/components/ui/button";
+import { BedDoubleIcon, CalendarIcon } from "lucide-react";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import { format } from "date-fns";
+
 import {
   Form,
   FormControl,
@@ -15,11 +18,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { BedDoubleIcon, CalendarIcon } from "lucide-react";
-
-import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { cn } from "@/lib/utils";
-import { format } from "date-fns";
 import { Calendar } from "./ui/calendar";
 
 export const formSchema = z.object({
@@ -27,12 +26,12 @@ export const formSchema = z.object({
   dates: z.object({
     from: z.date(),
     to: z.date(),
-    // from: z.date({ required_error: "Please select a check-in date" }),
-    // to: z.date({ required_error: "Please select a check-out date" }),
   }),
   adults: z
     .string()
-    .min(1, { message: "Please select at least 1 adult" })
+    .min(1, {
+      message: "Please select at least 1 adult",
+    })
     .max(12, { message: "Max 12 adults Occupancy" }),
   children: z.string().min(0).max(12, {
     message: "Max 12 children Occupancy",
@@ -42,7 +41,7 @@ export const formSchema = z.object({
   }),
 });
 
-const SearchForm = () => {
+function SearchForm() {
   const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -87,7 +86,7 @@ const SearchForm = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col lg:flex-row lg:max-w-6x lg:mx-auto items-center justify-center space-x-0 lg:space-x-2 space-y-4 lg:space-y-0 rounded-lg"
+        className="flex flex-col lg:flex-row lg:max-w-6xl lg:mx-auto items-center justify-center space-x-0 lg:space-x-2 space-y-4 lg:space-y-0 rounded-lg"
       >
         <div className="grid w-full lg:max-w-sm items-center gap-1.5">
           <FormField
@@ -208,7 +207,7 @@ const SearchForm = () => {
                   <FormLabel className="text-white">Rooms</FormLabel>
                   <FormMessage />
                   <FormControl>
-                    <Input type="number" placeholder="Rooms" {...field} />
+                    <Input type="number" placeholder="rooms" {...field} />
                   </FormControl>
                 </FormItem>
               )}
@@ -224,6 +223,6 @@ const SearchForm = () => {
       </form>
     </Form>
   );
-};
+}
 
 export default SearchForm;

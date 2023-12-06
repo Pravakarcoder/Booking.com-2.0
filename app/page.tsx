@@ -6,6 +6,9 @@ export default function Home() {
     <main className="bg-[#013B94]">
       <section className="max-w-7xl mx-auto">
         <h2 className="font-bold text-5xl text-white">Find your Next Stay</h2>
+        <h2 className="font-semibold text-3xl text-white mx-2 my-3">
+          Clone By Pravakar Adhikari
+        </h2>
         <h3 className="text-white py-5 text-xl">
           Search low prices on hotels, homes and much more...
         </h3>

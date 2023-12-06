@@ -15,19 +15,18 @@ export type SearchParams = {
   checkout: string;
 };
 
-const SearchPage = async ({ searchParams }: Props) => {
+async function SearchPage({ searchParams }: Props) {
   if (!searchParams.url) return notFound();
 
   const results = await fetchResults(searchParams);
 
-  if (!results) return <div>No Results...</div>;
-
-  console.log(results);
+  if (!results) return <div>No results...</div>;
 
   return (
     <section>
       <div className="mx-auto max-w-7xl p-6 lg:px-8">
-        <h1 className="text-4xl font-bold pb-3">Your Trip Ressults</h1>
+        <h1 className="text-4xl font-bold pb-3">Your Trip Results</h1>
+
         <h2 className="pb-3">
           Dates of trip:
           <span className="italic ml-2">
@@ -44,8 +43,8 @@ const SearchPage = async ({ searchParams }: Props) => {
         <div className="space-y-2 mt-5">
           {results.content.listings.map((item, i) => (
             <div
-              className="flex space-y-2 justify-between space-x-4 p-5 border rounded-lg"
               key={i}
+              className="flex space-y-2 justify-between space-x-4 p-5 border rounded-lg"
             >
               <img
                 src={item.url}
@@ -77,7 +76,7 @@ const SearchPage = async ({ searchParams }: Props) => {
                   </div>
 
                   <div className="text-right">
-                    <p className="text-xs">{item.booking_metadata}</p>
+                    <p className="text-xs ">{item.booking_metadata}</p>
                     <p className="text-2xl font-bold">{item.price}</p>
                   </div>
                 </div>
@@ -88,6 +87,6 @@ const SearchPage = async ({ searchParams }: Props) => {
       </div>
     </section>
   );
-};
+}
 
 export default SearchPage;
