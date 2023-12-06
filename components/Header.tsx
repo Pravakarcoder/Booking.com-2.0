@@ -13,6 +13,7 @@ import {
 } from "@heroicons/react/20/solid";
 import { Dialog, Disclosure, Popover, Transition } from "@headlessui/react";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 const products = [
   {
@@ -52,10 +53,12 @@ function Header() {
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Booking.com</span>
-            <img
+            <Image
               className="h-12 w-auto"
               src="https://static1.squarespace.com/static/5bde0f00c3c16aa95581e2e2/62b4cb1add9d257dd43bb03d/62b653fedc7c895918d19b24/1656116254983/booking+logo+white.png?format=1500w"
               alt=""
+              width={300}
+              height={120}
             />
           </Link>
         </div>
@@ -172,10 +175,12 @@ function Header() {
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Booking.com</span>
-              <img
+              <Image
                 className="h-8 w-auto"
                 src="https://static1.squarespace.com/static/5bde0f00c3c16aa95581e2e2/62b4cb1add9d257dd43bb03d/62b653fedc7c895918d19b24/1656116254983/booking+logo+white.png?format=1500w"
                 alt=""
+                width={300}
+                height={80}
               />
             </a>
             <button

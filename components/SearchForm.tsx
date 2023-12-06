@@ -59,8 +59,6 @@ function SearchForm() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-
     const checkin_monthday = values.dates.from.getDate().toString();
     const checkin_month = (values.dates.from.getMonth() + 1).toString();
     const checkin_year = values.dates.from.getFullYear().toString();
