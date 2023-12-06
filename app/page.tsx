@@ -35,7 +35,7 @@ export default function Home() {
                 className="w-80 h-72 object-cover rounded-lg pb-2"
                 src={item.src}
                 alt=""
-                width={80}
+                width={300}
                 height={72}
               />
               <p className="font-bold">{item.title}</p>
